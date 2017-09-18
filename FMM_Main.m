@@ -7,6 +7,7 @@
 clc
 clear all
 close all
+addpath .
 
 %% Get Input Data From Files
 
@@ -27,7 +28,7 @@ fprintf('\n Number of Chebyshev Nodes: %d \n', nChebNodes);
 %% Fast Matrix Vector Product
 
 % 1 Building FMM Tree
-import kernel_Base.Calculate_potential
+import kernel_Base.calculate_Potential
 
 tic;
 ATree = H2_2D_Tree(nChebNodes, charges, location, N, m); % FMM Tree
@@ -36,7 +37,7 @@ fprintf('\n Total time taken for FMM(build tree) is: %f  seconds\n', toc);
 % 2 Calculating Potential 
 tic;
 kex1=ExampleKernel1; % Name of custom kernel
-potential_kex1 = Calculate_potential(kex1, ATree);
+potential_kex1 = calculate_Potential(kex1, ATree);
 fprintf('\n Total time taken for FMM(calculations) is: %f seconds\n', toc);
 
 
