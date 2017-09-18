@@ -10,7 +10,7 @@ classdef kernel_Base
     
     methods (Static)
         %% Calculates potential
-        [potential] = Calculate_potential(obj, tree, node, potential)
+        [potential] = calculate_Potential(obj, tree, node, potential)
         
         %% Evaluate kernel at Chebyshev nodes
         [K] = kernel_Cheb_2D(obj,M,xVec,N,yVec)
