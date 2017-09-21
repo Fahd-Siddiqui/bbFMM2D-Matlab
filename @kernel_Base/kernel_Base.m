@@ -10,7 +10,7 @@ classdef kernel_Base
     
     methods (Static)
         %% Calculates potential
-        [potential] = calculate_Potential(obj, tree, node, potential)
+        [potential] = calculate_Potential(obj, tree, charges, node, potential)
         
         %% Evaluate kernel at Chebyshev nodes
         [K] = kernel_Cheb_2D(obj,M,xVec,N,yVec)
@@ -26,6 +26,12 @@ classdef kernel_Base
         
         %% M2L Obtains Chebyshev node potential from well separated clusters
         calculate_NodePotential_From_Wellseparated_Clusters(obj, node,rank,nChebNodes)   
+        
+        %% Resets the Node Charges
+        set_Node_Charge_Zero(node)
+        
+        %% Sets new charges on the tree
+        update_Charge(tree,node)
         
     end  
     

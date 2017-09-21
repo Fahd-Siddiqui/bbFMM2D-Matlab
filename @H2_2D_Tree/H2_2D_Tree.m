@@ -28,27 +28,25 @@ classdef H2_2D_Tree < handle
     
     methods
         %% Constructor of class H2_2D_Tree
-        function Tree=H2_2D_Tree(nChebNodes, charge, location, N, m)
-            import H2_2D_Tree.*
+        function Tree=H2_2D_Tree(nChebNodes, location, N, m)
             if nargin
                 Tree.nChebNodes        =	nChebNodes;
                 Tree.rank              =	nChebNodes*nChebNodes;
                 Tree.N                 =	N;
                 Tree.m                 =	m;
                 Tree.maxLevels         =	0;
-                Tree.chargeTree        =	charge;
                 Tree.locationTree      =   location;
                 
                 % Get Chebyshev nodes
-                Tree.cNode = get_Standard_Chebyshev_Nodes(Tree.nChebNodes);
+                Tree.cNode = H2_2D_Tree.get_Standard_Chebyshev_Nodes(Tree.nChebNodes);
                 
                 % Get Chebyshev polynomials evaluated at Chebyshev nodes
-                Tree.TNode = get_Standard_Chebyshev_Polynomials( Tree.nChebNodes, Tree.nChebNodes, Tree.cNode );
+                Tree.TNode = H2_2D_Tree.get_Standard_Chebyshev_Polynomials( Tree.nChebNodes, Tree.nChebNodes, Tree.cNode );
                 
                 % Gets transfer matrices
-                Tree.R     = get_Transfer(Tree.nChebNodes,Tree.cNode, Tree.TNode);
+                Tree.R     = H2_2D_Tree.get_Transfer(Tree.nChebNodes,Tree.cNode, Tree.TNode);
                 
-                [Tree.center, Tree.radius] = get_Center_Radius(location);
+                [Tree.center, Tree.radius] = H2_2D_Tree.get_Center_Radius(location);
                 % Create root
                 Tree.root              = H2_2D_Node(0,0);
                 Tree.root.nNeighbor    =	0;
@@ -60,10 +58,10 @@ classdef H2_2D_Tree < handle
                 Tree.root.isRoot       = true;
                 
                 fprintf('Assigning children...\n');
-                assign_Children(Tree, Tree.root , Tree.R , nChebNodes , Tree.cNode , Tree.TNode);
+                H2_2D_Tree.assign_Children(Tree, Tree.root , Tree.R , nChebNodes , Tree.cNode , Tree.TNode);
                 fprintf('Children assigned.\n');
 
-                build_Tree(Tree.root);
+                H2_2D_Tree.build_Tree(Tree.root);
                 fprintf('Maximum levels is: %d\n', Tree.maxLevels);
                 
             end

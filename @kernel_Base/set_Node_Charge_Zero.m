@@ -4,10 +4,17 @@
 %             Written for Matlab by : Fahd Siddiqui and Ali Rezaei                             
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-function  get_Scaled_ChebNode( node, cNode)
-% Evaluates 'nChebNodes' standardized chebyshev nodes in any interval
-for i=1:2
-    node.scaledCnode(:,i) = node.center(i) + node.radius(i) .* cNode;
-end
+function set_Node_Charge_Zero(node)
+% Sets node charge to zero
+if  node.isLeaf
+    node.charge     =   zeros(size(node.charge));
+    node.nodeCharge =   zeros(size(node.nodeCharge));
+    node.chargeComputed=false;
+else
+    node.nodeCharge =   zeros(size(node.nodeCharge));
+    for k = 1 : length(node.child)
+        kernel_Base.set_Node_Charge_Zero(node.child(k));
+    end
 end
 
+end

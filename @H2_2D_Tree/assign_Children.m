@@ -7,12 +7,6 @@
 function assign_Children( Tree, node, R, nChebNodes,cNode,TNode )
 % Assigns Children to the given node
 
-import H2_2D_Tree.*
-
-% for i=1:4
-%     node.child(i , 1) = H2_2D_Node(0 , 0);
-% end
-
 if node.N == 0
     node.isLeaf	 =	true;
     node.isEmpty =	true;
@@ -24,7 +18,7 @@ else
     node.isEmpty       = false;
     node.isLeaf        = false;
     
-    get_Scaled_ChebNode(node , cNode);
+    H2_2D_Tree.get_Scaled_ChebNode(node , cNode);
     
     for k = 1 : node.N
         
@@ -35,11 +29,8 @@ else
     % Operation on leaf cell ---------------------------------------------------
     if node.N <= 4*Tree.rank   
         node.isLeaf = true;
-        node.R      = get_Transfer_From_Parent_To_Children(node.N, nChebNodes , node.location , node.center , node.radius , TNode);
-        get_Charge(Tree,node);
-        %  Step one from the paper (page 5 Fong et al 2009)
-        node.nodeCharge = node.nodeCharge + node.R' * node.charge;
-        
+        node.R      = H2_2D_Tree.get_Transfer_From_Parent_To_Children(node.N, nChebNodes , node.location , node.center , node.radius , TNode);
+
         if Tree.maxLevels < node.nLevel
             Tree.maxLevels = node.nLevel;
         end
@@ -80,11 +71,7 @@ else
         
         % Calling assign children to each child --------------------------------
         for k=1:4
-            assign_Children(Tree, node.child(k,1) , R , nChebNodes , cNode , TNode );
-            if ~node.child(k).isEmpty
-                % Step two from the paper (page 5 Fong et al 2009)
-                node.nodeCharge = node.nodeCharge + transpose(R{k}) * (node.child(k).nodeCharge);
-            end
+            H2_2D_Tree.assign_Children(Tree, node.child(k,1) , R , nChebNodes , cNode , TNode );
         end
     end
 end

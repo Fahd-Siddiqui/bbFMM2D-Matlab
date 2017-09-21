@@ -6,7 +6,10 @@
 
 function [ R ] = get_Transfer_From_Parent_To_Children( N, nChebNodes, location, center, radius, TNode )
 % Obtains interpolation operator, which interpolates information from Chebyshev nodes of parent to Points in children
-standlocation = ((location - center) ./ radius);
+standlocation=zeros(N,2);
+for i=1:2
+    standlocation(:,i) = ((location(:,i) - center(i)) ./ radius(i));
+end
 Transfer = cell(2 , 1);
 
 for k = 1 : 2
