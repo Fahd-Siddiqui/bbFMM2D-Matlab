@@ -4,7 +4,7 @@
 %             Written for Matlab by : Fahd Siddiqui and Ali Rezaei                             
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-%clc
+clc
 clear all
 close all
 addpath .
@@ -17,7 +17,7 @@ location   = Data(:,1:2);           % Locations of the charges matrix
 charges    = Data(:,3:end);         % Sets of Charges
 N          = length(location);      % Number of points (DOF)
 m          = size(charges,2);       % Number of charge vectors
-nChebNodes = 3;                     % Number of Chebyshev nodes( >= 3)
+nChebNodes = 9;                     % Number of Chebyshev nodes( >= 3)
 
 fprintf('\n Number of charges: %d \n',N);
 fprintf('\n Number of sets of charges: %d \n',m);
