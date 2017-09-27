@@ -1,17 +1,27 @@
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%                     Black Box Fast Multipole Method
-%             Written for C++ by    : Sivaram Ambikasaran, Ruoxi Wang
-%             Written for Matlab by : Fahd Siddiqui and Ali Rezaei                             
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%                                                                             %
+%                   BLACK BOX FAST MULTIPOLE METHOD 2D                        %
+%                             Version 1.0                                     %
+%          Written for C++ by    : Sivaram Ambikasaran, Ruoxi Wang            %
+%          Written for MATLAB by : Ali Rezaei, Fahd Siddiqui                  %
+%                                                                             %
+% =========================================================================== %
+% LICENSE: MOZILLA 2.0                                                        %
+%   This Source Code Form is subject to the terms of the Mozilla Public       %
+%   License, v. 2.0. If a copy of the MPL was not distributed with this       %
+%   file, You can obtain one at http://mozilla.org/MPL/2.0/.                  %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 function assign_Cousin(node , neighborNumber)
 % Assigns cousins to children of the node  
 
 if neighborNumber == 1 && ~node.neighbor(1).isEmpty
     %% Assigning cousins and neighbor to NeighborNumber # 1 child # 1.
-    node.child(1).interaction(node.child(1).nInteraction+1) =	node.neighbor(1).child(1);
-    node.child(1).interaction(node.child(1).nInteraction+2) =	node.neighbor(1).child(2);
-    node.child(1).interaction(node.child(1).nInteraction+3) =	node.neighbor(1).child(3);
+    node.child(1).interaction(node.child(1).nInteraction+1) = node.neighbor(1).child(1);
+    node.child(1).interaction(node.child(1).nInteraction+2) = node.neighbor(1).child(2);
+    node.child(1).interaction(node.child(1).nInteraction+3) = node.neighbor(1).child(3);
     node.child(1).neighbor(1) =	node.neighbor(1).child(4);
     node.child(1).nInteraction = node.child(1).nInteraction + 3;
     node.child(1).nNeighbor    = node.child(1).nNeighbor + 1;
@@ -334,3 +344,4 @@ elseif (neighborNumber==8 && ~node.neighbor(8).isEmpty )
 end
 end
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

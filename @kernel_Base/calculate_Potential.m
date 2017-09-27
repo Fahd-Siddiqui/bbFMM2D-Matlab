@@ -1,8 +1,18 @@
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%                     Black Box Fast Multipole Method
-%             Written for C++ by    : Sivaram Ambikasaran, Ruoxi Wang
-%             Written for Matlab by : Fahd Siddiqui and Ali Rezaei                             
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%                                                                             %
+%                   BLACK BOX FAST MULTIPOLE METHOD 2D                        %
+%                             Version 1.0                                     %
+%          Written for C++ by    : Sivaram Ambikasaran, Ruoxi Wang            %
+%          Written for MATLAB by : Ali Rezaei, Fahd Siddiqui                  %
+%                                                                             %
+% =========================================================================== %
+% LICENSE: MOZILLA 2.0                                                        %
+%   This Source Code Form is subject to the terms of the Mozilla Public       %
+%   License, v. 2.0. If a copy of the MPL was not distributed with this       %
+%   file, You can obtain one at http://mozilla.org/MPL/2.0/.                  %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 function [potential] = calculate_Potential(obj, tree, charges, node, potential)
 % Calculates the potential for the node and transfers it to the Tree
@@ -16,9 +26,9 @@ if nargin ==3
     tree.chargeTree        =	charges;
     kernel_Base.update_Charge(tree,tree.root);
     
-    fprintf( ' Calculating potential...\n');
+    fprintf( '\n\n Calculating potential...');
     potential = kernel_Base.calculate_Potential(obj, tree, [], tree.root ,potential);
-    fprintf(' Calculated potential.\n');
+    fprintf(' Done.');
 end
 
 
@@ -38,6 +48,8 @@ if nargin ==5
             
             % Potential from Chebyshev nodes (Local expansion)
             node.potential = node.potential + node.R * node.nodePotential;
+            
+            
             
             % Self potential
             node.potential = node.potential + obj.kernel_2D(node.N , node.location , node.N , node.location) * node.charge;
@@ -74,6 +86,7 @@ if nargin ==5
         end
         
     end
-
-
 end
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
