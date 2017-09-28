@@ -1,7 +1,7 @@
-# bbFMM2D
+# bbFMM2D-Matlab
 Blackbox FMM in 2D using Matlab
 
-This is the MATLAB/Octave translation of the C++ code of bbFMM. Tested with Matlab R2012 and R2016.
+This is the MATLAB/Octave translation of the C++ code of bbFMM2D. Tested with Matlab R2012 and R2016.
 
 Define the kernel in @ExampleKernel1/ExampleKernel1.m file or create your own classes.
 Use this kernel class in the FMM_Main.m file to compute the corresponding potential.
