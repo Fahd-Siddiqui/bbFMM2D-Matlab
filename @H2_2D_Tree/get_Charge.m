@@ -4,7 +4,7 @@
 %                             Version 1.0                                     %
 %          Written for C++ by    : Sivaram Ambikasaran, Ruoxi Wang            %
 %          Written for MATLAB by : Ali Rezaei, Fahd Siddiqui                  %
-%              https://github.com/DrFahdSiddiqui/bbFMM2D                      %
+%           https://github.com/DrFahdSiddiqui/bbFMM2D-Matlab                  %
 %                                                                             %
 % =========================================================================== %
 % LICENSE: MOZILLA 2.0                                                        %
@@ -13,7 +13,6 @@
 %   file, You can obtain one at http://mozilla.org/MPL/2.0/.                  %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 function get_Charge( Tree, node )
