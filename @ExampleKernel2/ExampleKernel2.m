@@ -15,17 +15,23 @@
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-classdef ExampleKernel2 <handle 
-% Class for defining the custom kernel function used to compute the
-% potential. Make copies of this file and define other such classes if
-% computations with multiple kernels are desired.
-
+classdef ExampleKernel2 <handle
+    % Class for defining the custom kernel function used to compute the
+    % potential. Make copies of this file and define other such classes if
+    % computations with multiple kernels are desired.
+    
     methods (Static)
-        function [kernel] = kernel_2D(~,x,~,y) % Do not change this name
-            % Euclidean norm kernel. Implemented using meshgrid.
-            [i1,j1] = meshgrid(x(:,1),y(:,1));
-            [i2,j2] = meshgrid(x(:,2),y(:,2));
-            kernel = sqrt( (i1 - j1) .^ 2 + (i2 - j2) .^2 );
+        function [kernel] = kernel_2D(M,x,N,y) % Do not change this name
+            % Euclidean norm kernel. Implemented using for loops,
+            % Slower implementation
+            kernel	= zeros(M,N);
+            for i= 1 : M
+                for j= 1 : N
+                    % Define the custom kernel function here
+                    kernel(i , j) = sqrt((x(i , 1) - y(j , 1)) .^ 2 + ...
+                        (x(i , 2) - y(j , 2)) .^2 );
+                end
+            end
         end
     end
     
