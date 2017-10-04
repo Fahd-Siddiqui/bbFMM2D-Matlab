@@ -20,8 +20,8 @@ classdef ExampleKernel2 <handle
     % potential. Make copies of this file and define other such classes if
     % computations with multiple kernels are desired.
     
-    methods (Static)
-        function [kernel] = kernel_2D(M,x,N,y) % Do not change this name
+    methods 
+        function [kernel] = kernel_2D(obj,M,x,N,y) % Do not change this name
             % Euclidean norm kernel. Implemented using for loops,
             % Slower implementation
             kernel	= zeros(M,N);
