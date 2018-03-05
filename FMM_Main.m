@@ -41,7 +41,7 @@ ATree = H2_2D_Tree(nChebNodes, location, N, m); % FMM Tree
 fprintf('\n Total time taken for FMM(build tree) is: %f  seconds', toc);
 
 
-% 2 Calculating Potential 
+% 2 Calculating Potential
 tic;
 kex1=ExampleKernel1; % Name of custom kernel
 potential_kex1 = kernel_Base.calculate_Potential(kex1, ATree, charges);
