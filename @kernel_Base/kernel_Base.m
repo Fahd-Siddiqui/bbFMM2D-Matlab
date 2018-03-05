@@ -31,7 +31,7 @@ classdef kernel_Base
         set_Tree_Potential_Zero(node)
         
         % Tranfers potential from node to final potential matrix when needed
-        [potential] = tranfer_Potential_To_Potential_Tree(node ,potential)
+        [potential] = transfer_Potential_To_Potential_Tree(node ,potential)
         
         % L2L Tranfers potential from Chebyshev node of parent to Chebyshev node of children
         transfer_NodePotential_To_Child(node,R)

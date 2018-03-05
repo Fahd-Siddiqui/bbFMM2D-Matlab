@@ -50,12 +50,10 @@ if nargin ==5
             % Potential from Chebyshev nodes (Local expansion)
             node.potential = node.potential + node.R * node.nodePotential;
             
-            
-            
             % Self potential
             node.potential = node.potential + obj.kernel_2D(node.N , node.location , node.N , node.location) * node.charge;
             
-            potential = kernel_Base.tranfer_Potential_To_Potential_Tree(node,potential);
+            potential = kernel_Base.transfer_Potential_To_Potential_Tree(node,potential);
         else
             computePotential =	false;
             for k = 1 : 8
@@ -78,7 +76,7 @@ if nargin ==5
             kernel_Base.transfer_NodePotential_To_Child(node,tree.R);
             
             if computePotential
-                potential = kernel_Base.tranfer_Potential_To_Potential_Tree(node,potential);
+                potential = kernel_Base.transfer_Potential_To_Potential_Tree(node,potential);
             end
             
             for k= 1:4

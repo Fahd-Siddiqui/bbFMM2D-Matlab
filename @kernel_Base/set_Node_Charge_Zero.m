@@ -17,16 +17,15 @@
 
 function set_Node_Charge_Zero(node)
 % Sets node charge to zero
-if  node.isLeaf
-    node.charge     =   zeros(size(node.charge));
-    node.nodeCharge =   zeros(size(node.nodeCharge));
+if  ~node.isEmpty
     node.chargeComputed=false;
-else
+    node.charge     =   zeros(size(node.charge));
     node.nodeCharge =   zeros(size(node.nodeCharge));
     for k = 1 : length(node.child)
         kernel_Base.set_Node_Charge_Zero(node.child(k));
     end
 end
+
 
 end
 
